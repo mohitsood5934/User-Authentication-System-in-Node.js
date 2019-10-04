@@ -72,7 +72,7 @@ Express is a minimal and flexible Node.js web application framework that provide
             console.log("Welcome,you are listening to the port 7000)
             })
             
- 2.express.static :It is a built in middleware provided by the express.js.It is useful for serving static files like images,HTML,CSS,JS.
+ 2.express.static() :It is a built in middleware provided by the express.js.It is useful for serving static files like images,HTML,CSS,JS.
  
    --using express.static() in your app.js
    
@@ -108,7 +108,49 @@ Express is a minimal and flexible Node.js web application framework that provide
                        app.listen('7000',function(req,res){
                             console.log("Welcome,you are listening to the port 7000)
                              })
+  
+  3.morgan middleware : It is a logging middleware for our node.js applications.
+    ** API **
+     var express = require('express')
+     var morgan  = require('morgan')
+     var app = express()
+     app.use(morgan())
+   **Modules Used**:
+   
+   1.fs(File System): It is used to to access physical file system. It is responsible for all the asynchronous or synchronous   file I/O      operations.
+   2.path:The Path module provides a way of working with directories and file paths.It can be used for extracting the file system paths.
+   
+   **Code for creating log file for you app**
+                                               
+                          var express = require("express");
+                          var bodyParser=require("body-parser");
+                          //requiring filestream module
+                          var fs = require("fs");
+                          //requiring path module
+                          var path = require("path");
+                          
+                          //requiring the morgan middleware
+                          var morgan = require("morgan");
+                          //creating a writestream in append mode
+                          var accessLogStream=fs.createWriteStream(path.join(__dirname,'accesslog'),{flags:'a'});
+                          //set up the logger
+                          app.use(morgan('combined',{stream:accessLogStream})) 
+                          app.use(bodyParser.json());
+                          app.use(bodyParser.urlencoded({extended:false});
+                          app.use(express.static(__dirname+'/public');
+                          //localhost:7000
+                          app.get('/',function(req,res){
+                                res.send("Hello World!!");
+                                })                  
+                          //listener event
+                       app.listen('7000',function(req,res){
+                            console.log("Welcome,you are listening to the port 7000)
+                             })
+                             
+   4.express-session:
                          
+                        
+                        
                          
                                                                       
                                             
