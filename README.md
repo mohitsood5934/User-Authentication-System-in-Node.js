@@ -193,7 +193,51 @@ Express is a minimal and flexible Node.js web application framework that provide
                                             else{
                                          res.redirect('/login');
                                                 }});
-   5.bcrypt-nodejs:
+   5.bcrypt-nodejs: It is a middleware function that is used for password hashing.It always hashes every password with a salt.
+       - Better way to store a password is to add a salt to the hashing function-adding additional random data to the input of a hashing         function that makes each password hash unique.
+       -Implementation of bcrypt-nodejs:
+                  app.js
+                  
+                  //hashing the password
+                  const express=require("express");
+                  const app = express();
+                  const bcrypt = require("bcrypt-nodejs");
+                  const saltrounds=10;
+                  const password="randomstring";
+                  bcrypt
+                    .hash(password, saltRounds)
+                     .then(hash => {
+                                    console.log(`Hash: ${hash}`);
+                                          // Store hash in your password DB.
+                                          })
+                         .catch(err => console.error(err.message));
+                   
+                   //validating a password with a hash,saltRounds is a work or cost factor ,more the salt rounds more will be the time                      taken for the operation 
+                   
+                   // app.js
+
+                   const bcrypt = require("bcrypt");
+                   const password = "randomstring";
+                   const hash = "$2b$10$69SrwAoAUNC5F.gtLEvrNON6VQ5EX89vNqLEqU655Oy9PeT/HRM/a";
+                   bcrypt
+                     .compare(password, hash)
+                           .then(res => {
+                            console.log(res);
+                                })
+                      .catch(err => console.error(err.message));
+                      
+                   //In this case, res is true, indicating that the password provided, when hashed, matched the stored hash.
+                   //2 major funtions in bcrypt-nodejs
+                      i>bcrypt.hashSync(password, bcrypt.genSaltSync(10)):Hash the password with the saltrounds
+                      ii>bcrypt.compareSync(password, user.password):compare the hashed password with the entered password
+                      
+  **View Engine used :EJS**
+                  
+                 
+                  
+    
+
+
                          
                          
                          
