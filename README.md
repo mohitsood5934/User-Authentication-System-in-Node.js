@@ -170,6 +170,34 @@ Express is a minimal and flexible Node.js web application framework that provide
                        saveUninitialized:true
                        }))
                        
+           -we use express.Router middleware for the routing purpose,now I will explain about how to restrict the user from accessing               the unauthorized route if the session is not created for him
+                         router.get('/dashboard',function(req,res){
+                                   if(req.session && req.session.user){
+                                              User.findOne({firstName:req.session.user.firstName}).exec(function(err,user)
+                                                            {
+                                                            if(!user)
+                                                                 {
+                                                                   req.session.reset();
+                                                                    res.redirect('/login');
+                                                                         }
+                                else
+                                      {
+                                          req.user = user;
+                                          delete req.user.password; // delete the password from the session
+                                          req.session.user = user;  //refresh the session value
+                                          res.locals.user = user;
+                                          res.render('dashboard');
+                                        }
+                             });
+                                 }
+                                            else{
+                                         res.redirect('/login');
+                                                }});
+   5.bcrypt-nodejs:
+                         
+                         
+                         
+                       
                 
                         
                         
