@@ -148,7 +148,29 @@ Express is a minimal and flexible Node.js web application framework that provide
                              })
                              
    4.express-session:
-                         
+     -  All web applications work through HTTP protocol, which is stateless. That means HTTP doesn't remember or record details of any          request. It only takes the request to the web server, and then it serves the response back to the browser.This is not enough, as        user identity is required for operations followed by login. So a session is created upon user login, and it can be used to hold          any information/attributes required between requests until logout.
+     - Sessions can be maintained using hidden form fields, cookies, or http session.
+     -It restricts the user from accesing the unauthorized route means user can access specific routes only when the session is created       for the user and server identifies the user based on the credentials entered by him like username and password.
+     -Implementing sessions using express-session middleware:
+          -session will be created each time when user login in to the system and session will be destroyed when the user logout from 
+           the system.
+                      
+                       var express = require("express");
+                       var app = express();
+                       //now session will have access to the express-session middleware
+                       var session = require("express-session");
+                       //here keys is a file name ,storing secret in a different file is a good practice
+                       app.use(session({
+                       cookie:{
+                       Name:'session',
+                       maxAge:10*60*1000,
+                       },
+                       secret:keys.sessionSecret,
+                       resave:false,
+                       saveUninitialized:true
+                       }))
+                       
+                
                         
                         
                          
