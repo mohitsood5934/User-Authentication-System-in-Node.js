@@ -337,7 +337,30 @@ Express is a minimal and flexible Node.js web application framework that provide
                                   app.listen('3000',function(req,res){
                                   console.log('Welcome',You are listening to port 3000);
                                   })
-                      
+ 
+ **Mongoose Schemas**
+   1.Creating the user schema and model: Mongoose uses Schema object to define the document list of properties,each with its own type and constraints.After creating the schema you have to  define the model constructor that you will use to create the instances of MongoDB documents.Using this instances we will create,retrieve,update and delete the user documenst i.e can perform CRUD Operations.
+         **Code**
+                              
+                               var mongoose= require("mongoose");
+                               mongoose.Promise=global.Promise;
+                               mongoose.set('useCreateIndex',true);
+                               var userSchema = new mongoose.schema({
+                                      firstName:String,
+                                      lastName:String,
+                                      email:String,
+                                      username:String,
+                                      password:String
+                               )};
+                               var User = mongoose.model("User", nameSchema);
+                               module.exports=User;
+                               //this will create a collection named 'users',where we can store our data in the  
+  
+ 
+                        
+                         
+                         
+                    
                               
           
       
