@@ -117,8 +117,10 @@ Express is a minimal and flexible Node.js web application framework that provide
      app.use(morgan())
    **Modules Used**:
    
-   1.fs(File System): It is used to to access physical file system. It is responsible for all the asynchronous or synchronous   file I/O      operations.
-   2.path:The Path module provides a way of working with directories and file paths.It can be used for extracting the file system paths.
+   - fs(File System):
+            -It is used to to access physical file system. It is responsible for all the asynchronous or synchronous   file I/O  operations.<br/>
+            
+   - path: The Path module provides a way of working with directories and file paths.It can be used for extracting the file system   paths.
    
    **Code for creating log file for you app**
                                                
@@ -147,11 +149,15 @@ Express is a minimal and flexible Node.js web application framework that provide
                             console.log("Welcome,you are listening to the port 7000)
                              })
                              
-   4.express-session:
-     -  All web applications work through HTTP protocol, which is stateless. That means HTTP doesn't remember or record details of any          request. It only takes the request to the web server, and then it serves the response back to the browser.This is not enough, as        user identity is required for operations followed by login. So a session is created upon user login, and it can be used to hold          any information/attributes required between requests until logout.
-     - Sessions can be maintained using hidden form fields, cookies, or http session.
-     -It restricts the user from accesing the unauthorized route means user can access specific routes only when the session is created       for the user and server identifies the user based on the credentials entered by him like username and password.
-     -Implementing sessions using express-session middleware:
+   4.**express-session:**
+   
+   - All web applications work through HTTP protocol, which is stateless. That means HTTP doesn't remember or record details of any          request. It only takes the request to the web server, and then it serves the response back to the browser.This is not enough, as        user identity is required for operations followed by login. So a session is created upon user login, and it can be used to hold          any information/attributes required between requests until logout.
+     
+   - Sessions can be maintained using hidden form fields, cookies, or http session.
+     
+   - It restricts the user from accesing the unauthorized route means user can access specific routes only when the session is created        for the user and server identifies the user based on the credentials entered by him like username and password.
+   
+   - Implementing sessions using express-session middleware:
           -session will be created each time when user login in to the system and session will be destroyed when the user logout from 
            the system.
                       
@@ -193,9 +199,13 @@ Express is a minimal and flexible Node.js web application framework that provide
                                             else{
                                          res.redirect('/login');
                                                 }});
-   5.bcrypt-nodejs: It is a middleware function that is used for password hashing.It always hashes every password with a salt.
-       - Better way to store a password is to add a salt to the hashing function-adding additional random data to the input of a hashing         function that makes each password hash unique.
-       -Implementation of bcrypt-nodejs:
+   5.**bcrypt-nodejs:** 
+   
+   - It is a middleware function that is used for password hashing.It always hashes every password with a salt.
+   
+   - Better way to store a password is to add a salt to the hashing function-adding additional random data to the input of a hashing         function that makes each password hash unique.
+   
+   - Implementation of bcrypt-nodejs:
                   app.js
                   
                   //hashing the password
@@ -231,10 +241,13 @@ Express is a minimal and flexible Node.js web application framework that provide
                       i>bcrypt.hashSync(password, bcrypt.genSaltSync(10)):Hash the password with the saltrounds
                       ii>bcrypt.compareSync(password, user.password):compare the hashed password with the entered password
                       
-  **View Engine used :EJS**
-  -There are various types of engines that we can use for our application(pug,handlebars) but I prefer to use EJS to template node application.This  is because syntax of EJS is similar to HTML.Therefore it is easy to learn.We use EJS to include repeatable parts of our website(partials) and pass data to our views.
-  -I am going to give you a layout of how to use EJS in your application
-  -folder structure:
+  **View Engine used :(EJS)**
+  
+  - There are various types of engines that we can use for our application(pug,handlebars) but I prefer to use EJS to template node application.This  is because syntax of EJS is similar to HTML.Therefore it is easy to learn.We use EJS to include repeatable parts of our website(partials) and pass data to our views.
+  
+  - I am going to give you a layout of how to use EJS in your application
+  
+  - folder structure:
              -views
                    -partials
                          -nav.ejs
@@ -281,7 +294,6 @@ Express is a minimal and flexible Node.js web application framework that provide
       
       
    **DATABASE(MongoDB)**
-   NOSQL DATABASE provides:
      -Horizontal Scaling (Sharding)
      -Replica set
      -Schemaless structure
@@ -289,14 +301,15 @@ Express is a minimal and flexible Node.js web application framework that provide
      -record is stored in form of documents
      
    **Mongoose**
-   Mongoose is a ODM(Object Data Modelling) technique.It is a node.js module that provides developers with the ability to model
+ - Mongoose is a ODM(Object Data Modelling) technique.It is a node.js module that provides developers with the ability to model
    objects and save them as MongoDB documents.
    
-   Installing Mongoose:
+ -Installing Mongoose:
         npm install mongoose 
     
    **Connecting to MongoDB:**
-    1.You will need MongoDB connection URI ,that tells the MongoDB drivers how to connect to the database instance.MongoDB URI is constructed as follows:-
+   
+ - You will need MongoDB connection URI ,that tells the MongoDB drivers how to connect to the database instance.MongoDB URI is   constructed as follows:-
                           mongodb://username:password@hostname:port/database
                              -while connecting to local instance skip the username and password
                              
@@ -308,9 +321,8 @@ Express is a minimal and flexible Node.js web application framework that provide
         i>useUnifiedTopology : handles monitoring all the servers in a replica set or sharded cluster.
         ii>useNewUrlParser: used for parsing the connection string
                        
-                             
-   2.storing the URI directly in the file is a bad practice,
-     i>use environment configuration file for this
+  -storing the URI directly in the file is a bad practice,
+    - use environment configuration file for this
                                      config/env/development.js file
                                       
                                       module.exports={
@@ -318,7 +330,7 @@ Express is a minimal and flexible Node.js web application framework that provide
                                       sessionsecret:'raandomstringgoeshere'
                                        };
                      
-   ii>Now in  your config folder,create a file named mongoose.js that contains following code-
+   - Now in  your config folder,create a file named mongoose.js that contains following code-
                                      
                                       var config = require('./config'),
                                       var mongoose = require('mongoose');
@@ -327,7 +339,7 @@ Express is a minimal and flexible Node.js web application framework that provide
                                       var db = mongoose.connect(config.db);
                                       return db;
                                       };
-   iii>Now make changes to your server.js file with following code-
+   - Now make changes to your server.js file with following code-
    
                                   process.env.NODE_ENV = process.env.NODE_ENV || 'development';
                                   var mongoose = require('./config/mongoose');
@@ -339,7 +351,8 @@ Express is a minimal and flexible Node.js web application framework that provide
                                   })
  
  **Mongoose Schemas**
-   1.Creating the user schema and model: Mongoose uses Schema object to define the document list of properties,each with its own type and constraints.After creating the schema you have to  define the model constructor that you will use to create the instances of MongoDB documents.Using this instances we will create,retrieve,update and delete the user documenst i.e can perform CRUD Operations.
+ 
+- Creating the user schema and model: Mongoose uses Schema object to define the document list of properties,each with its own type and constraints.After creating the schema you have to  define the model constructor that you will use to create the instances of MongoDB documents.Using this instances we will create,retrieve,update and delete the user documenst i.e can perform CRUD Operations.
          **Code**
                               
                                var mongoose= require("mongoose");
