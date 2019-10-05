@@ -369,7 +369,26 @@ Express is a minimal and flexible Node.js web application framework that provide
                                module.exports=User;
                                //this will create a collection named 'users',where we can store our data in the  key-value pair.
                                
- -User Registration
+ -User Registration:
+ ![image](https://user-images.githubusercontent.com/26309496/66259137-1ea4b980-e7cb-11e9-9dff-2b99daaf417b.png)
+ 
+ -Fill the registration form and press submit button,user is successfully created.We can see it in console.
+ ![image](https://user-images.githubusercontent.com/26309496/66259159-590e5680-e7cb-11e9-8da6-5740a447dd0b.png)
+ -Also we can look if the data is stored in database or not-
+ ![image](https://user-images.githubusercontent.com/26309496/66259190-b1455880-e7cb-11e9-8174-9c43d3e2efd9.png)
+     Here we can see that our entered data is stored in MongoDB database and the password is hashed :)
+ -Now we can login ,if our credentials are correct we will be taken to dashboard otherwise login page will be displayed.
+ ![image](https://user-images.githubusercontent.com/26309496/66259221-008b8900-e7cc-11e9-9a9d-92f10f042b36.png)
+ -Successfully logged in to the system,hurray........
+ ![image](https://user-images.githubusercontent.com/26309496/66259223-11d49580-e7cc-11e9-9b1a-c94c2c4dee90.png)
+ 
+ -now after logging out it will display following window:
+ ![image](https://user-images.githubusercontent.com/26309496/66259242-40eb0700-e7cc-11e9-8f7c-1d771971058f.png)
+ 
+ -We cannot access dashboard if we are not logged in to the system because we have restricted the user from accessing it if he is not logged in.We have implemented this by using session,which keeps look on the user.
+ 
+ 
+ -Now I will teach you how to store data in the remote database ,we  will use Database-as-a -service for MongoDB by mLAB which is a MongoDB Company
  
   
  
