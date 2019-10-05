@@ -232,8 +232,58 @@ Express is a minimal and flexible Node.js web application framework that provide
                       ii>bcrypt.compareSync(password, user.password):compare the hashed password with the entered password
                       
   **View Engine used :EJS**
-                  
-                 
+  -There are various types of engines that we can use for our application(pug,handlebars) but I prefer to use EJS to template node application.This  is because syntax of EJS is similar to HTML.Therefore it is easy to learn.We use EJS to include repeatable parts of our website(partials) and pass data to our views.
+  -I am going to give you a layout of how to use EJS in your application
+  -folder structure:
+             -views
+                   -partials
+                         -nav.ejs
+                   -login.ejs
+                   -reg.ejs
+                   -logout1.ejs
+                   -dashboard.ejs
+              -server.js
+              
+   -partials folder will contain the files which we can reuse in our website by just including it in the other views
+   
+   
+   -example1 : to include repeatable parts of our website(partials).As we all know that navbar is included in almost every page of our application ,so why to write code again and again in the another file to include navbar.Using EJS,saves us from writing code again and again.
+         <% include partials/nav1.ejs%> is used to include nav1.ejs template in the login.ejs template
+          ** login.ejs **
+           
+           <body>
+           <% include partials/nav1.ejs%>
+           <h1 align="center" >Login Here</h1>
+           <div id="login">
+           <form action="/login" method="post" role="form" class="loginForm">
+           <div class="form-group">
+           <input type="text" class="form-control br-radius-zero" name="firstName" placeholder="Enter  your First Name:" id="name">
+           </div>
+           <div class="form-group">
+           <input type="password" class="form-control br-radius-zero" placeholder="Enter  your Password:" name="password" id="psd">
+           </div>
+          <button type="submit" class="btn btn-primary" id="button" value="Login">Login</button>
+          </form>
+          </div>
+          </body>
+    
+   -example2 : passing data to our views
+      routes.js
+      
+      //here we are including the usermodel in User variable ,hence it is storing all the information related to usermodel in models           directory
+      var User = require('../models/usermodel');
+      
+      //passing data to our views
+      
+      router.get("/reg", function(req, res) {
+      res.render('reg',{user:req.user});
+      });
+      
+      
+   **DATABASE(MongoDB)**
+   NOSQL DATABASE:
+      
+
                   
     
 
