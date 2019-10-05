@@ -281,7 +281,16 @@ Express is a minimal and flexible Node.js web application framework that provide
       
       
    **DATABASE(MongoDB)**
-   NOSQL DATABASE:
+   NOSQL DATABASE provides:
+     -Horizontal Scaling (Sharding)
+     -Replica set
+     -Schemaless structure
+     -Higher throughput
+     -record is stored in form of documents
+     
+   **Mongoose**
+   Mongoose is a ODM(Object Data Modelling) technique.It is a node.js module that provides developers with the ability to model
+   objects 
       
 
                   
