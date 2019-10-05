@@ -290,7 +290,56 @@ Express is a minimal and flexible Node.js web application framework that provide
      
    **Mongoose**
    Mongoose is a ODM(Object Data Modelling) technique.It is a node.js module that provides developers with the ability to model
-   objects 
+   objects and save them as MongoDB documents.
+   
+   Installing Mongoose:
+        npm install mongoose 
+    
+   **Connecting to MongoDB:**
+    1.You will need MongoDB connection URI ,that tells the MongoDB drivers how to connect to the database instance.MongoDB URI is constructed as follows:-
+                          mongodb://username:password@hostname:port/database
+                             -while connecting to local instance skip the username and password
+                             
+                         var mongoose = require("mongoose");
+                         mongoose.Promise = global.Promise;
+                         mongoose.connect("mongodb://localhost:27017/userlogin",{ useNewUrlParser: true ,useUnifiedTopology:true});
+                         
+   where
+        i>useUnifiedTopology : handles monitoring all the servers in a replica set or sharded cluster.
+        ii>useNewUrlParser: used for parsing the connection string
+                       
+                             
+   2.storing the URI directly in the file is a bad practice,
+     i>use environment configuration file for this
+                                     config/env/development.js file
+                                      
+                                      module.exports={
+                                      db: 'mongodb://localhost:27017/databasename',
+                                      sessionsecret:'raandomstringgoeshere'
+                                       };
+                     
+   ii>Now in  your config folder,create a file named mongoose.js that contains following code-
+                                     
+                                      var config = require('./config'),
+                                      var mongoose = require('mongoose');
+                                      
+                                      module.exports = function(){
+                                      var db = mongoose.connect(config.db);
+                                      return db;
+                                      };
+   iii>Now make changes to your server.js file with following code-
+   
+                                  process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+                                  var mongoose = require('./config/mongoose');
+                                  var express = require('./config/express');
+                                  var db = mongoose;
+                                  var app = express();
+                                  app.listen('3000',function(req,res){
+                                  console.log('Welcome',You are listening to port 3000);
+                                  })
+                      
+                              
+          
       
 
                   
