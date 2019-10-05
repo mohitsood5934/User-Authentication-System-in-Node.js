@@ -388,7 +388,9 @@ Express is a minimal and flexible Node.js web application framework that provide
  -We cannot access dashboard if we are not logged in to the system because we have restricted the user from accessing it if he is not logged in.We have implemented this by using session,which keeps look on the user.
  
  
- -Now I will teach you how to store data in the remote database ,we  will use Database-as-a -service for MongoDB by mLAB which is a MongoDB Company
+ -Now I will teach you how to store data in the remote database ,we  will use Database-as-a -service for MongoDB by mLAB which is a MongoDB Company.mLAB provides fully managed cloud database service.
+ 
+ **Steps to store your data in the cloud database using mLAB**
  
   
  
