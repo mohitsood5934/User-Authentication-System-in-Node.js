@@ -111,10 +111,12 @@ Express is a minimal and flexible Node.js web application framework that provide
   
   3.morgan middleware : It is a logging middleware for our node.js applications.
     ** API **
-     var express = require('express')
-     var morgan  = require('morgan')
-     var app = express()
-     app.use(morgan())
+                              
+                               var express = require('express')
+                               var morgan  = require('morgan')
+                               var app = express()
+                               app.use(morgan())
+     
    **Modules Used**:
    
    - fs(File System):
@@ -316,10 +318,9 @@ Express is a minimal and flexible Node.js web application framework that provide
                          var mongoose = require("mongoose");
                          mongoose.Promise = global.Promise;
                          mongoose.connect("mongodb://localhost:27017/userlogin",{ useNewUrlParser: true ,useUnifiedTopology:true});
-                         
-   where
-        i>useUnifiedTopology : handles monitoring all the servers in a replica set or sharded cluster.
-        ii>useNewUrlParser: used for parsing the connection string
+                
+        - useUnifiedTopology : handles monitoring all the servers in a replica set or sharded cluster.
+        - useNewUrlParser: used for parsing the connection string
                        
   -storing the URI directly in the file is a bad practice,
     - use environment configuration file for this
@@ -352,8 +353,7 @@ Express is a minimal and flexible Node.js web application framework that provide
  
  **Mongoose Schemas**
  
-- Creating the user schema and model: Mongoose uses Schema object to define the document list of properties,each with its own type and constraints.After creating the schema you have to  define the model constructor that you will use to create the instances of MongoDB documents.Using this instances we will create,retrieve,update and delete the user documenst i.e can perform CRUD Operations.
-         **Code**
+- Creating the user schema and model: Mongoose uses Schema object to define the document list of properties,each with its own type and constraints.After creating the schema you have to  define the model constructor that you will use to create the instances of MongoDB documents.Using this instances we will create,retrieve,update and delete the user documenst i.e can perform CRUD Operations.4 
                               
                                var mongoose= require("mongoose");
                                mongoose.Promise=global.Promise;
@@ -367,7 +367,10 @@ Express is a minimal and flexible Node.js web application framework that provide
                                )};
                                var User = mongoose.model("User", nameSchema);
                                module.exports=User;
-                               //this will create a collection named 'users',where we can store our data in the  
+                               //this will create a collection named 'users',where we can store our data in the  key-value pair.
+                               
+ -User Registration
+ 
   
  
                         
