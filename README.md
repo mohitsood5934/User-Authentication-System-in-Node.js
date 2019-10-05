@@ -391,6 +391,30 @@ Express is a minimal and flexible Node.js web application framework that provide
  -Now I will teach you how to store data in the remote database ,we  will use Database-as-a -service for MongoDB by mLAB which is a MongoDB Company.mLAB provides fully managed cloud database service.
  
  **Steps to store your data in the cloud database using mLAB**
+ -Navigate to www.mlab.com and sign up if you did not have account otherwise just login in to the site.
+ ![image](https://user-images.githubusercontent.com/26309496/66259470-0040bd00-e7cf-11e9-94c2-597d52551c40.png)
+ ![image](https://user-images.githubusercontent.com/26309496/66259479-3120f200-e7cf-11e9-8de2-ffa6c0e20555.png)
+ -After logging in you will be taken to the home page ,click on create new button in upper right corner:
+ ![image](https://user-images.githubusercontent.com/26309496/66259506-6c232580-e7cf-11e9-8e09-a7a5a5060f88.png)
+ -A new page will be displayed ,you have to choose the SANDBOX plan and press continue.
+       ![image](https://user-images.githubusercontent.com/26309496/66259560-f3709900-e7cf-11e9-9075-f497fe4d28c6.png)
+ -Enter database name and in next page submit the order
+ ![image](https://user-images.githubusercontent.com/26309496/66259570-1ef38380-e7d0-11e9-98f4-8204028b5860.png)
+ -Now you will be taken to homepage and you will notice that your database will be shown their
+ ![image](https://user-images.githubusercontent.com/26309496/66259589-4fd3b880-e7d0-11e9-801a-84f812acf1fa.png)
+-click on the databse url and you will be taken to new page,notice the MongoDBURI pattern ,for using this service click on users and create new user of the database
+![image](https://user-images.githubusercontent.com/26309496/66259613-91fcfa00-e7d0-11e9-9a9d-4892c0c73e6e.png)
+
+Users->Add Database User->Enter username and password thats all!!
+
+![image](https://user-images.githubusercontent.com/26309496/66259624-b3f67c80-e7d0-11e9-84d2-cbf055a11a86.png)
+
+-Use this connection string in node.js app for connecting to remote database and here use your username and password in place of the dbuser and dbpassword
+
+![image](https://user-images.githubusercontent.com/26309496/66259667-47c84880-e7d1-11e9-96a7-08bc175cc9c2.png)
+ 
+ 
+ 
  
   
  
