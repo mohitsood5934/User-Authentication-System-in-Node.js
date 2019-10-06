@@ -13,7 +13,8 @@ var ejs = require("ejs");
 //database connection setup
 const mongoose = require("mongoose");
 mongoose.Promise = global.Promise;
-mongoose.connect("mongodb://rohitsood:mohitsood123@ds229068.mlab.com:29068/userauth",{ useNewUrlParser: true ,useUnifiedTopology:true})
+//mongoose.connect("mongodb://localhost:27017/userlogin",{ useNewUrlParser: true ,useUnifiedTopology:true});   =>local database URI
+mongoose.connect("mongodb://<dbuser>:<dbpassword>@ds229068.mlab.com:29068/userauth",{ useNewUrlParser: true ,useUnifiedTopology:true})
 .then(() => console.log('connection successful'))
 .catch((err) => console.log(err));
 
