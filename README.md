@@ -412,6 +412,25 @@ Users->Add Database User->Enter username and password thats all!!
 -Use this connection string in node.js app for connecting to remote database and here use your username and password in place of the dbuser and dbpassword
 
 ![image](https://user-images.githubusercontent.com/26309496/66259667-47c84880-e7d1-11e9-96a7-08bc175cc9c2.png)
+
+-change in code in server.js 
+![image](https://user-images.githubusercontent.com/26309496/66265569-7af0f300-e836-11e9-96a0-a35ad46b6a0a.png)
+-error you may get,infact many of people get this error
+![image](https://user-images.githubusercontent.com/26309496/66265824-6a427c00-e83a-11e9-8249-273640eff452.png)
+**solution to the eror:**
+-Make sure that your mongoose version is compatible with mongoDB driver
+-You should not use proxy network
+-Make sure that you have created user for the database and password should contain only alphanumeric characters.
+
+
+
+![image](https://user-images.githubusercontent.com/26309496/66265963-4849f900-e83c-11e9-87ed-b03da97886c2.png)
+
+![image](https://user-images.githubusercontent.com/26309496/66265988-8c3cfe00-e83c-11e9-8a5d-ccb2c1b6895f.png)
+
+Hurray!!!!
+Mohit Sood
+  
  
  
  
