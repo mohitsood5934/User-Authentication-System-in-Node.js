@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf 8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <title>Login</title>
+
+  <!-- bootstrap -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Open+Sans|Raleway|Candal">
+   <style type="text/css">
+   .form-control
+        {
+            width: 50%;
+        }
+        #login
+      {
+        position: relative;
+        margin-left: 500px;
+        
+
+      }
+      #submit
+      {
+        margin-left: 2px;
+        width:50%;
+        border-radius: 10px;
+      }
+      .form-group
+      {
+        width:50%;
+      }
+    </style>
+    <body>
+      <%include partials/nav1.ejs%>
+      <br>
+      <br>
+      <br>
+      <h1 align="center" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;User Registration</h1>
+      <div id="login">
+        <br>
+        <form method="post" action="/reg" id="two" role="form" class="loginForm">
+          <div class="form-group">
+            <input type="text" class="form-control br-radius-zero" placeholder="Enter  your First Name:" name="firstName" >
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control br-radius-zero" placeholder="Enter  your Last Name:" name="lastName">
+          </div>
+          <div class="form-group">
+            <input type="password" class="form-control br-radius-zero" placeholder="Enter  your Password:"  name="password">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control br-radius-zero" placeholder="Enter  your City:" name="city">
+          </div>
+          <div class="form-group">
+            <input type="email" class="form-control br-radius-zero" placeholder="Enter  your Email:" name="email">
+          </div>
+          <button type="submit" class="btn btn-primary" id="submit" value="Submit">Submit</button>
+        </form>
+      </div>
+    </body>
+  </head>
+</html>
