@@ -91,16 +91,18 @@ Express is a minimal and flexible Node.js web application framework that provide
                           app.use(bodyParser.json());
                           app.use(bodyParser.urlencoded({extended:false});
                           app.use(express.static(__dirname+'/public');
+                          
                           //localhost:7000
                           app.get('/',function(req,res){
                                 res.send("Hello World!!");
                                 })
+                                
                          //localhost:7000/index
-                         
                          app.get('/index.htm',function(req,res){
                          
                          res.sendFile(__dirname + "/" +"index.htm");
                          })
+                         
                          //localhost:7000/images/logo.png will show image
                          
                          
@@ -142,7 +144,8 @@ Express is a minimal and flexible Node.js web application framework that provide
                           app.use(bodyParser.json());
                           app.use(bodyParser.urlencoded({extended:false});
                           app.use(express.static(__dirname+'/public');
-                          //localhost:7000
+                         
+                         //localhost:7000
                           app.get('/',function(req,res){
                                 res.send("Hello World!!");
                                 })                  
@@ -165,8 +168,10 @@ Express is a minimal and flexible Node.js web application framework that provide
                       
                        var express = require("express");
                        var app = express();
+                       
                        //now session will have access to the express-session middleware
                        var session = require("express-session");
+                       
                        //here keys is a file name ,storing secret in a different file is a good practice
                        app.use(session({
                        cookie:{
@@ -180,14 +185,14 @@ Express is a minimal and flexible Node.js web application framework that provide
                        
            -we use express.Router middleware for the routing purpose,now I will explain about how to restrict the user from accessing               the unauthorized route if the session is not created for him
                          router.get('/dashboard',function(req,res){
-                                   if(req.session && req.session.user){
+                                     if(req.session && req.session.user){
                                               User.findOne({firstName:req.session.user.firstName}).exec(function(err,user)
                                                             {
                                                             if(!user)
                                                                  {
                                                                    req.session.reset();
                                                                     res.redirect('/login');
-                                                                         }
+                                                                  }
                                 else
                                       {
                                           req.user = user;
@@ -217,7 +222,7 @@ Express is a minimal and flexible Node.js web application framework that provide
                   const saltrounds=10;
                   const password="randomstring";
                   bcrypt
-                    .hash(password, saltRounds)
+                    .hash(password,saltRounds)
                      .then(hash => {
                                     console.log(`Hash: ${hash}`);
                                           // Store hash in your password DB.
@@ -288,7 +293,14 @@ Express is a minimal and flexible Node.js web application framework that provide
       //here we are including the usermodel in User variable ,hence it is storing all the information related to usermodel in models           directory
       var User = require('../models/usermodel');
       
+      
+      //if you want to pass an array
+      var drinks=['Pen','Pencil','Eraser];
       //passing data to our views
+      
+      //router.get('/getarraydata',function(req,res){
+      res.render('data',{drinks:drinks});
+      });
       
       router.get("/reg", function(req, res) {
       res.render('reg',{user:req.user});
@@ -318,9 +330,12 @@ Express is a minimal and flexible Node.js web application framework that provide
                          var mongoose = require("mongoose");
                          mongoose.Promise = global.Promise;
                          mongoose.connect("mongodb://localhost:27017/userlogin",{ useNewUrlParser: true ,useUnifiedTopology:true});
+                         
                 
         - useUnifiedTopology : handles monitoring all the servers in a replica set or sharded cluster.
         - useNewUrlParser: used for parsing the connection string
+        
+        -passing of the parameters depens on your node.js version,your node.js version should always be compatible with  the mongodb driver
                        
   -storing the URI directly in the file is a bad practice,
     - use environment configuration file for this
