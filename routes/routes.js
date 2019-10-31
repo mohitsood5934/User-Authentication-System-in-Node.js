@@ -30,8 +30,13 @@ req.session.destroy();
 
 res.redirect('/logout1');
 });
+router.get('/changepassword',function(req,res){
+  res.render("changepassword",{user:req.user});
+})
 router.get('/dashboard',function(req,res){
+  
   if(req.session && req.session.user){
+    
     User.findOne({firstName:req.session.user.firstName}).exec(function(err,user)
     {
 
@@ -54,6 +59,12 @@ router.get('/dashboard',function(req,res){
   res.redirect('/login');
 }
 });
+router.get("/successpassword",function(req,res){
+  res.render('successpassword',{user:req.user});
+})
+router.get("/forgotpassword",function(req,res){
+  res.render('forgotpassword',{user:req.user});
+})
 router.post("/reg", function(req, res){
     
     var firstName = req.body.firstName;
@@ -107,4 +118,30 @@ router.post('/login', function(req, res) {
     }
   });
 });
+
+router.post('/changepassword',function(req,res){
+  if(req.session && req.session.user){
+    
+    var password = req.body.password;
+    User.updateOne({"email":req.session.user.email},{$set:{"password":bcrypt.hashSync(password, bcrypt.genSaltSync(10))}})
+    .exec(function(err,user){
+      if(!user)
+      {
+        req.session.reset();
+        res.redirect('/login');
+      }
+      else
+      {
+        req.user = user;
+        delete req.user.password; // delete the password from the session
+        req.session.user = user;  //refresh the session value
+        res.locals.user = user;
+        res.redirect('/successpassword');
+      }
+
+    })
+  }
+    
+})
+
 module.exports=router;
