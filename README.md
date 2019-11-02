@@ -9,6 +9,7 @@
 - How to flash messages.
 - How to hash the password before storing it in the database. 
 - How to insert data in to MongoDB(NOSQL Database) using Node.js. 
+- How user can change his  password after logging in to the application using session object  
 - How to deploy your data on the cloud (mLAB)
 - How to host your site on Github Pages
 
